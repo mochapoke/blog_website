@@ -10,6 +10,8 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+let posts = [];
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -17,7 +19,6 @@ app.use(express.static("public"));
 
 
 app.get('/', (req,res) => {
-<<<<<<< HEAD
   res.render('home', {homeContent: homeStartingContent} );
 })
 
@@ -28,15 +29,24 @@ app.get('/about', (req,res) => {
 app.get('/contact', (req,res) => {
   res.render('contact', {contact: contactContent});
 })
-=======
-  res.render('home', 
-    {homeContent: homeStartingContent} );
+
+app.get('/compose', (req, res) => {
+  res.render('compose')
 })
 
+app.post('/compose', (req, res) => {
+  const postContents = {
+    title: req.body.postTitle,
+    content: req.body.postBody,
+  };
 
+  posts.push(postContents);
 
->>>>>>> 09064df90686eab2c05e97a4e12d34033ab75498
+  res.redirect('/');
+})
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });
+
