@@ -19,7 +19,10 @@ app.use(express.static("public"));
 
 
 app.get('/', (req,res) => {
-  res.render('home', {homeContent: homeStartingContent} );
+  res.render('home', {
+    startingContent: homeStartingContent,
+    posts: posts
+  })
 })
 
 app.get('/about', (req,res) => {
@@ -45,6 +48,13 @@ app.post('/compose', (req, res) => {
   res.redirect('/');
 })
 
+app.get('/posts/:postName', (req, res) => {
+  posts.forEach(post => {
+    if (post.title === req.params.postName){
+      console.log('match Founded')
+    }
+  })
+})
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
