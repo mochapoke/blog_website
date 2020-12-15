@@ -25,4 +25,4 @@
 
 **스크린샷**
 ---
-<img width='200' src='https://github.com/mochapoke/blog_website/blob/master/images/journal.PNG'>
+<img width='500' src='https://github.com/mochapoke/blog_website/blob/master/images/journal.PNG'>
