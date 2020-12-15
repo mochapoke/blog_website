@@ -5,7 +5,9 @@
 
   <% posts.forEach( posts => { %> 
     <h1><%= posts.title %></h1> 
-    <p><%= posts.content %></p>
+    <p><%= posts.content.length > 100 ? posts.content.slice(0, 100) + ' ...' : posts.content %>
+    <a href="/posts/<%= posts.title %>">➕</a>
+    </p>
   <% }) %>
 
 <%- include('partials/footer') -%> 
