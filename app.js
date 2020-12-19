@@ -58,7 +58,6 @@ app.get('/contact', (req,res) => {
 
 app.get('/compose', (req, res) => {
   res.render('compose');
-  res.redirect('/');
 })
 
 app.get('/posts/:postName', (req, res) => {
@@ -81,7 +80,7 @@ app.post('/compose', (req, res) => {
     title: req.body.postTitle,
     content: req.body.postBody,
   });
-  post.save();
+  post.save(err => err ? console.log(err) : res.redirect('/'));
 })
 
 app.listen(3000, function() {
